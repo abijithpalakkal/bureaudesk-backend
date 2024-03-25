@@ -2,6 +2,7 @@
 import { NextFunction, Request, Response } from "express"
 import { sendotp } from "../../services/otpservices"
 import { error } from "console";
+import { userCreatedProducer } from "../../infrastructure/kafka/producers/createUserProducer";
 
 
 export const userSignupcontroller = (dependencies: any) => {
@@ -16,6 +17,11 @@ export const userSignupcontroller = (dependencies: any) => {
                 const data = await verifyemailwithotp(dependencies).execute(req.body.email)
                 console.log(data, "leaves,leaves")
                 if (data.otp == req.body.otp) {
+                    const obj={
+                        email:req.body.email,
+                        password:req.body.password
+                    }
+                    await userCreatedProducer(obj)
                     res.json({ status: true, payload: "verified" })
                 } else {
                     res.json({ status: true, payload: "not verified" })

@@ -10,12 +10,12 @@ const userSchema=new Schema({
   Location: { type: String },
   Position: { type: String },
   Createdby: { type: Schema.Types.ObjectId },
+  password:{type: String},
   email: { type: String,unique:true},
   Authorization: { type: String },
   Department: { type: Schema.Types.ObjectId },
   Departmentid: { type: Schema.Types.ObjectId },
   Admin: { type: Boolean },
-  otp:{type:Number}
 },{
     timestamps: true
 })
