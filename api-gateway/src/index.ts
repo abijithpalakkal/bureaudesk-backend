@@ -14,11 +14,12 @@ app.use(cors(corsOptions));
 app.use(express.json())
 app.use(cookieParser())
 
-app.use('/auth',proxy('http://localhost:3000'))
+app.use('/auth', (req, res, next) => {
+    console.log(req.body);
+    next();
+  }, proxy('http://localhost:3000/otpsignup'));
 
 app.listen(port,()=>{
     console.log(`gateway running in port${port}`)
 })
-
-
 
