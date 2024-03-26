@@ -3,12 +3,15 @@ import { NextFunction, Request, Response } from "express"
 import { sendotp } from "../../services/otpservices"
 import { error } from "console";
 import { userCreatedProducer } from "../../infrastructure/kafka/producers/createUserProducer";
+import jwt from 'jsonwebtoken';
+
 
 
 export const userSignupcontroller = (dependencies: any) => {
     console.log("i am in controller")
     const { useCases: { otpSignupUseCase } } = dependencies;
     const { useCases: { verifyemailwithotp } } = dependencies;
+    const { useCases: { verifiedUserUseCase } } = dependencies
 
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
@@ -17,12 +20,27 @@ export const userSignupcontroller = (dependencies: any) => {
                 const data = await verifyemailwithotp(dependencies).execute(req.body.email)
                 console.log(data, "leaves,leaves")
                 if (data.otp == req.body.otp) {
-                    const obj={
-                        email:req.body.email,
-                        password:req.body.password
+                    const obj = {
+                        email: req.body.email,
+                        password: req.body.password,
+                        Authorization: "root_node",
                     }
-                    await userCreatedProducer(obj)
-                    res.json({ status: true, payload: "verified" })
+                    try {
+                        const userData = await verifiedUserUseCase(dependencies).execute(obj)
+                        await userCreatedProducer({ ...obj, _id: userData._id })
+                        const payload = {
+                            ...obj
+                        };
+                        const token = jwt.sign(payload, '123456789ab', { expiresIn: '24h' })
+                        res.cookie("auth", token, {
+                            maxAge: 1000 * 60 * 60 * 24,
+                            httpOnly: true
+                        })
+                        res.json({ status: true, payload: "verified" })
+                    } catch (err: any) {
+                        throw new Error(err)
+                    }
+
                 } else {
                     res.json({ status: true, payload: "not verified" })
                 }
@@ -41,6 +59,7 @@ export const userSignupcontroller = (dependencies: any) => {
 
 
         catch (err: any) {
+            console.log(err?.message)
             res.json({ status: false })
         }
 
