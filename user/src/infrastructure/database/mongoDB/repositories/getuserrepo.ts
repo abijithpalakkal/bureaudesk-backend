@@ -1,8 +1,8 @@
  import { user } from "../models/userSchema";
 
- export const signup=async(data:any)=>{
+ export const getUserRepo=async(data:any)=>{
     try{
-        const newuser= await user.create(data)
+        const newuser= await user.findOne({id:data})
         return newuser
     }catch(error:any){
       throw new Error(error?.message)

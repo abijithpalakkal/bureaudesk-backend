@@ -1,11 +1,11 @@
 import { UserEntities } from "../../domain/entities/userEntities";
 
-export const userSignupUseCase = (dependencies:any)=>{
-   const {repositories:{signup}}=dependencies;
+export const getUserUseCase = (dependencies:any)=>{
+   const {repositories:{getUserRepo}}=dependencies;
    return {
     execute:async(data:any)=>{
         try{
-            return await signup(data);
+            return await getUserRepo(data);
         }catch(error:any){
             throw new Error(error?.message)
         }

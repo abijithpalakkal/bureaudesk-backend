@@ -5,7 +5,7 @@ import { kafka } from "./infrastructure/kafka";
 import { stopConsumer } from "./infrastructure/kafka/consumer";
 
 (async () => {
-    console.log("i am here with server")
+    
     try {
         server;
         await dbConnection().catch((error: any) => {

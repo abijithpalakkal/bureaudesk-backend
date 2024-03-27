@@ -11,7 +11,7 @@ export const userSignupcontroller = (dependencies: any) => {
     console.log("i am in controller")
     const { useCases: { otpSignupUseCase } } = dependencies;
     const { useCases: { verifyemailwithotp } } = dependencies;
-    const { useCases: { verifiedUserUseCase } } = dependencies
+    const { useCases: { verifiedUserUseCase } } = dependencies;
 
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
@@ -29,25 +29,23 @@ export const userSignupcontroller = (dependencies: any) => {
                         const userData = await verifiedUserUseCase(dependencies).execute(obj)
                         await userCreatedProducer({ ...obj, _id: userData._id })
                         const payload = {
-                            ...obj
+                          ...userData
                         };
                         const token = jwt.sign(payload, '123456789ab', { expiresIn: '24h' })
                         res.cookie("auth", token, {
                             maxAge: 1000 * 60 * 60 * 24,
                             httpOnly: true
                         })
-                        res.json({ status: true, payload: "verified" })
+                        res.json({ status: true, payload: "verified",data:{
+                            id:userData._id
+                        } })
                     } catch (err: any) {
                         throw new Error(err)
-                    }
-
+                    }                      
                 } else {
                     res.json({ status: true, payload: "not verified" })
                 }
-
             } else {
-
-
                 const otp = await sendotp(req.body.email)
                 req.body.otp = otp
                 console.log(otp)

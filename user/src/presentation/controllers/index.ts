@@ -1,8 +1,8 @@
 import { dependencies } from "../../config/dependencies";
-import { userSignupcontroller } from "./usersignup"; 
+import { getuserController } from "./usersignup"; 
 
 export const controllers=(dependencies:any)=>{
     return{
-        signup:userSignupcontroller(dependencies)
+        getuser:getuserController(dependencies)
     }
 }
