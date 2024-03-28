@@ -15,6 +15,7 @@ export const userSignupcontroller = (dependencies: any) => {
 
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
+            console.log(req.body,"hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
             if (req?.body?.otp) {
 
                 const data = await verifyemailwithotp(dependencies).execute(req.body.email)
@@ -37,7 +38,11 @@ export const userSignupcontroller = (dependencies: any) => {
                             httpOnly: true
                         })
                         res.json({ status: true, payload: "verified",data:{
-                            id:userData._id
+                            id:userData._id,
+                          email:userData.email,
+                          Authorization:userData.Authorization
+                          
+
                         } })
                     } catch (err: any) {
                         throw new Error(err)

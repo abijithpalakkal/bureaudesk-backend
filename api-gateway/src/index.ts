@@ -16,6 +16,7 @@ app.use(cookieParser())
 
 app.use('/auth',proxy('http://localhost:3000/'));
 app.use('/user',proxy('http://localhost:3001/'));
+app.use('/company',proxy('http://localhost:3002/'));
 
 app.listen(port,()=>{
     console.log(`gateway running in port${port}`)
