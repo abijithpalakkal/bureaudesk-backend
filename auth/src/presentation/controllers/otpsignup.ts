@@ -30,11 +30,12 @@ export const userSignupcontroller = (dependencies: any) => {
                         const userData = await verifiedUserUseCase(dependencies).execute(obj)
                         await userCreatedProducer({ ...obj, _id: userData._id })
                         const payload = {
-                          ...userData
+                          email:userData.email,
+                          _id:userData._id
+
                         };
                         const token = jwt.sign(payload, '123456789ab', { expiresIn: '24h' })
                         res.cookie("auth", token, {
-                            maxAge: 1000 * 60 * 60 * 24,
                             httpOnly: true
                         })
                         res.json({ status: true, payload: "verified",data:{

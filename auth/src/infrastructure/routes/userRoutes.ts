@@ -4,7 +4,7 @@ import { controllers } from "../../presentation/controllers"
 
 export const userRouter=(dependencies:any)=>{
     
-    console.log("iam here")
+    console.log("i am here")
     const {otpsignup} = controllers(dependencies)
     const router = Router();
     router.route("/otpsignup")

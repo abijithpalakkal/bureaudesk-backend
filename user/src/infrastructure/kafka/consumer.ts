@@ -22,6 +22,7 @@ export const runConsumer = async () => {
                 try{
                     await subscriber[subscriberMethod](subscriberData);
                 } catch(error: any) {
+                    console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
                     throw new Error(error?.message)
                 }
             }

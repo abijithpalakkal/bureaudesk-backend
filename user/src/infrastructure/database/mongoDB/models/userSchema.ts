@@ -5,7 +5,7 @@ const userSchema=new Schema({
   Description: { type: String },
   Name: { type: String },
   Dob: { type: Date },
-  Company: { type: Schema.Types.ObjectId },
+  companyid: { type: Schema.Types.ObjectId },
   Contactno: { type: String },
   Location: { type: String },
   Position: { type: String },

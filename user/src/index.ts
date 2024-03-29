@@ -15,7 +15,6 @@ import { stopConsumer } from "./infrastructure/kafka/consumer";
             console.log("kafka running")
         }).catch(() => {
             console.log("error in kafka consumer")
-            process.exit()
         })
 
     } catch (error: any) {
@@ -23,8 +22,7 @@ import { stopConsumer } from "./infrastructure/kafka/consumer";
     } finally {
         process.on("SIGINT", async() => {
             console.log("\n\nServer is shutting down...");
-            await stopConsumer()
-            process.exit()
+            
         })
     }
 })();
