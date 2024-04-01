@@ -1,12 +1,13 @@
-import {Router} from "express"
+import { Router } from "express"
 import { NextFunction, Request, Response } from "express"
 import { controllers } from "../../presentation/controllers"
 
-export const userRouter=(dependencies:any)=>{
-    const{createcomapny}= controllers(dependencies)
+export const userRouter = (dependencies: any) => {
+    const { createcomapny, getcompanyinfo } = controllers(dependencies)
     const router = Router();
     router.route("/createcompany")
-            .post(createcomapny) 
-
+        .post(createcomapny)
+    router.route("/getcompany/:id")
+        .get(getcompanyinfo)
     return router
 }

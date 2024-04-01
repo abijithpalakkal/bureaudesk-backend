@@ -29,7 +29,7 @@ export const createCompanyController = (dependencies: any) => {
                     maxAge: 1000 * 60 * 60 * 24,
                     httpOnly: true
                 })
-                res.status(201).json({ status: true })
+                res.status(201).json({ status: true ,payload:data._id})
             });
         } catch (err: any) {
             console.log(err?.message)
