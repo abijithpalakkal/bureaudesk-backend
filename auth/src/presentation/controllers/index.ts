@@ -1,4 +1,3 @@
-import { dependencies } from "../../config/dependencies";
 import { userSignupcontroller } from "./otpsignup"; 
 import { userLoginController } from "./userlogin";
 
