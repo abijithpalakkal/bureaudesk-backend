@@ -11,7 +11,7 @@ export const userRouter = (dependencies: any) => {
         .get(getcompanyinfo)
     router.route("/createdepartment")
         .post(createdept)
-    router.route("/getdepartment")
+    router.route("/getdepartment/:id")
         .get(getdpt)
     return router
 }

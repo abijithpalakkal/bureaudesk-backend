@@ -1,10 +1,12 @@
 import { dependencies } from "../../config/dependencies";
+import { createemployeeController } from "./createemployee";
 import { getuserforauthController } from "./getuser";
 import { getuserController } from "./userlogin"; 
 
 export const controllers=(dependencies:any)=>{
     return{
         getuserlogin:getuserController(dependencies),
-        getuserforauth:getuserforauthController(dependencies)
+        getuserforauth:getuserforauthController(dependencies),
+        createuser:createemployeeController(dependencies)
     }
 }

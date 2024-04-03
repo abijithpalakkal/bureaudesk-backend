@@ -19,11 +19,11 @@ app.use((
     res: Response,
     next: NextFunction
   ) => {
-    console.error(err);
+    console.error(err.message);
       const errorResponse = {
-       message: err?.message || 'Something went wrong' 
+        errorResponse:{message: err?.message || 'Something went wrong' }
     };
-     res.status(500).json(errorResponse);
+     res.json(errorResponse);
   })
 
 app.listen(port,()=>{

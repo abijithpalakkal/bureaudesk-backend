@@ -8,7 +8,6 @@ export const getuserController = (dependencies: any) => {
     const { useCases: { getUserUseCase } } = dependencies;
 
     return async (req: Request, res: Response, next: NextFunction) => {
-
         try {
             const obj={_id:req.body.id}
             const data = await getUserUseCase(dependencies).execute(obj)
