@@ -31,14 +31,13 @@ export const userSignupcontroller = (dependencies: any) => {
                         const payload = {
                           email:userData.email,
                           _id:userData._id
-
                         };
                         const token = jwt.sign(payload, '123456789ab', { expiresIn: '24h' })
                         res.cookie("auth", token, {
                             httpOnly: true
                         })
                         res.json({ status: true, payload: "verified",data:{
-                            id:userData._id,
+                            _id:userData._id,
                           email:userData.email,
                           Authorization:userData.Authorization
                           
