@@ -3,7 +3,7 @@ import { otpEntities } from "../../../../domain/entities/otpEntities";
 
 const otpSchema = new Schema({
     email: {
-        type: String
+        type: String,
     },
     otp: {
         type: Number
@@ -12,7 +12,6 @@ const otpSchema = new Schema({
         type: Date,
         default: Date.now,
         expires: '1m',
-       
     }
 });
 

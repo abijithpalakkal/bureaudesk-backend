@@ -7,6 +7,7 @@ const userSchema=new Schema({
   Dob: { type: Date },
   companyid: { type: Schema.Types.ObjectId },
   Contactno: { type: String },
+  profileImage:{type:String},
   age:{type:Number},
   Location: { type: String },
   position: { type: String },

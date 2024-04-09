@@ -2,7 +2,10 @@ import { Schema, model } from "mongoose";
 
 
 const departmentSchema=new Schema({
-  Name: { type: String },
+  Name: { 
+    type: String,
+    unique:true
+  },
   companyid:{type: Schema.Types.ObjectId},
   departmentlogo: { type: String },
 },{
