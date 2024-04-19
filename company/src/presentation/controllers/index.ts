@@ -5,6 +5,7 @@ import { createDepartmentController } from "./createdepartment";
 import { getDepartmentController } from "./getdepartment";
 import { createTeamController } from "./createteam";
 import { getTeamController } from "./getteam";
+import { deleteTeamController } from "./deleteteam";
 
 export const controllers = (dependencies: any) => {
     return {
@@ -13,6 +14,7 @@ export const controllers = (dependencies: any) => {
         createdept: createDepartmentController(dependencies),
         getdpt:getDepartmentController(dependencies),
         createteam:createTeamController(dependencies),
-        getteam:getTeamController(dependencies)
+        getteam:getTeamController(dependencies),
+        deleteteam:deleteTeamController(dependencies)
     }
 }

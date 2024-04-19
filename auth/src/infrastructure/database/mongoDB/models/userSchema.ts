@@ -4,6 +4,7 @@ import { otpEntities } from "../../../../domain/entities/otpEntities";
 const otpSchema = new Schema({
     email: {
         type: String,
+        unique:true
     },
     otp: {
         type: Number

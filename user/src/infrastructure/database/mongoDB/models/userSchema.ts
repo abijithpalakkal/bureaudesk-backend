@@ -13,7 +13,10 @@ const userSchema=new Schema({
   position: { type: String },
   Createdby: { type: Schema.Types.ObjectId },
   password:{type: String},
-  email: { type: String,unique:true},
+  email: { 
+    type: String,
+    unique:true
+  },
   Authorization: { type: String },
   Department: { type: Schema.Types.ObjectId },
   Departmentid: { type: Schema.Types.ObjectId },
