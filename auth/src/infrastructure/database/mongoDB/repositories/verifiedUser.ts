@@ -3,7 +3,7 @@ import { verifiedUserEntities } from "../../../../domain/entities/verifiedUserEn
 
 export const verifiedUserRepo=async(data:verifiedUserEntities)=>{
     try{
-        console.log("wooooooooooooooooooooooooooooooooooooo")
+        
         const data1=await verifiedUser.create(data);
         return data1
         

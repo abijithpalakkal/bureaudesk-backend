@@ -12,15 +12,15 @@ export const setManagerController = (dependencies: any) => {
         try{
 
         
-        console.log(req.body,"adkjfhibfijnjvnkj nk j kn knsa vks ")
+    
         const obj = {
             Authorization: "semi_node",
             Departmentid: req.body.departmentid
         }
         const Response = await getEmployeesUseCase(dependencies).execute(obj)
-        console.log(Response,"responseaskjdbncakbjkcajkln c")
+       
         if (Response.length>0) {
-            console.log("evde ethi")
+          
             const obj2 = {
                 _id: Response[0]._id,
                 obj: {

@@ -1,7 +1,6 @@
 
 
 export const verifiedUserUseCase=(dependencies:any)=>{
-    console.log("heeeeeeeeeeeeeeeeee")
     const {repositories:{verifiedUserRepo}}=dependencies
     return{
         execute:async(data:any)=>{

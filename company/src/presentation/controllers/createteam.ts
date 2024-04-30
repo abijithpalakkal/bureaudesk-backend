@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken"
 
 
 export const createTeamController = (dependencies: any) => {
-    console.log("👌👌👌")
+  
     const { useCases: { createteamUseCase  } } = dependencies;
     return async (req: Request, res: Response, next: NextFunction) => {
 

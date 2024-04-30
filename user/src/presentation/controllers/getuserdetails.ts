@@ -13,7 +13,7 @@ export const getUserDetailsController = (dependencies: any) => {
         try { 
            
             const data = await getEmployeesUseCase(dependencies).execute(req.body)
-            console.log(data,"cbsbvh vw jv W V,W ")
+        
             res.json({status:true,payload:data})
         } catch (error) {
             next(error)

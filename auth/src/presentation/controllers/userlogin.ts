@@ -17,7 +17,7 @@ export const userLoginController = (dependencies: any) => {
                     throw new Error("wrong username or password")
                 }
             }
-            console.log(data, "utfdddddddddddddddA")
+           
             res.json(data)
         } catch (error: any) {
 

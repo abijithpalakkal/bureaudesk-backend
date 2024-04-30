@@ -16,12 +16,9 @@ export const runConsumer = async () => {
                 const {key, value} = message
                 const subscriberData = JSON.parse(String(value))
                 const subscriberMethod = String(key)
-                console.log(subscriberData,subscriberMethod)
-                console.log("❤️🚀😊😒🤣👌")
                 try{
                     await subscriber[subscriberMethod](subscriberData);
                 } catch(error: any) {
-                    console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",error)
                     throw new Error(error?.message)
                 }
             }

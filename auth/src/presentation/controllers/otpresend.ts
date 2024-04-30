@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken';
 
 
 export const otpResendController = (dependencies:any) => {
-    console.log("i am in otpresendcontroller")
+ 
     const { useCases: {otpUpdateUseCase,otpSignupUseCase} } = dependencies;
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
@@ -17,7 +17,7 @@ export const otpResendController = (dependencies:any) => {
            await otpSignupUseCase(dependencies).execute({email:req.body.email,otp:otp})
            res.json({status:true,message:"successfully send otp"})
         }catch (err: any) {
-            console.log(err?.message)
+          
             next(err)
         }
     }

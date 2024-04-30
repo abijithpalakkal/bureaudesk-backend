@@ -6,10 +6,10 @@ import jwt from "jsonwebtoken"
 
 
 export const getcompanyinfoController = (dependencies: any) => {
-    console.log("👌👌👌")
+ 
     const { useCases: { getcompanyinfoUseCase  } } = dependencies;
     return async (req: Request, res: Response, next: NextFunction) => {
-        console.log(req.body)
+       
         try {
             const data = await getcompanyinfoUseCase(dependencies).execute(req.params.id)
             res.json(data)

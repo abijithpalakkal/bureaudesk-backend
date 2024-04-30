@@ -15,7 +15,7 @@ export const getuserforauthController = (dependencies: any) => {
             const decodedtoken:any=await verifyToken(req.cookies.auth,'123456789ab')
             const obj={_id:decodedtoken._id}
             const data = await getUserUseCase(dependencies).execute(obj)
-            console.log(data,"cbsbvh vw jv W V,W ")
+           
             res.json({status:true,payload:data})
         } catch (error) {
             next(error)

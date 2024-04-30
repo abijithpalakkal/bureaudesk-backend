@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 
 
 export const deleteTeamController = (dependencies: any) => {
-    console.log("👌👌👌")
+   
     const { useCases: { deleteTeamUseCase  } } = dependencies;
     return async (req: Request, res: Response, next: NextFunction) => {
 

@@ -17,7 +17,7 @@ export const updateUserController = (dependencies: any) => {
                 obj:req.body
             }
             const data = await updateUserUseCase(dependencies).execute(obj1)
-            console.log(data,"cbsbvh vw jv W V,W ")
+          
             res.json({status:true,payload:data})
         } catch (error) {
             next(error)

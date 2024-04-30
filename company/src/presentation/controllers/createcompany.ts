@@ -26,7 +26,7 @@ export const createCompanyController = (dependencies: any) => {
                     password: decoded.password,
                     companyid: data._id
                 }
-                console.log(payload, "🚀🚀🚀")
+             
                 const token = jwt.sign(payload,'123456789ab', { expiresIn: '24h' })
                 res.cookie("auth", token, {
                     maxAge: 1000 * 60 * 60 * 24,

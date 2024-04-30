@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 export const sendotp = async(email:string)=>{
-    console.log(process.env,"DKJCBSJBVHJDNVJKDNKJLVDHB")
+   
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     
@@ -27,7 +27,7 @@ const mailOptions = {
 try {
     // Use await to wait for the email to be sent
     const info = await transporter.sendMail(mailOptions);
-    console.log(info.response);
+ 
     // Return the generated OTP
     return otp;
 } catch (error:any) {

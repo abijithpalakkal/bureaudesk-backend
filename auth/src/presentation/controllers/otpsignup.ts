@@ -11,7 +11,7 @@ import { hashPassword } from "../../utils/bcrypthash";
 
 
 export const userSignupcontroller = (dependencies: any) => {
-    console.log("i am in controller")
+ 
     const { useCases: { otpSignupUseCase } } = dependencies;
     const { useCases: { verifyemailwithotp } } = dependencies;
     const { useCases: { verifiedUserUseCase,getUserUseCase } } = dependencies;
@@ -23,7 +23,7 @@ export const userSignupcontroller = (dependencies: any) => {
 
                 const data = await verifyemailwithotp(dependencies).execute(req.body.email)
                 const hahed=await hashPassword(req.body.password)
-                console.log(data, "leaves,leaves")
+               
                 if (data.otp == req.body.otp) {
                     const obj = {
                         email: req.body.email,
@@ -61,13 +61,13 @@ export const userSignupcontroller = (dependencies: any) => {
                 }
                 const otp = await sendotp(req.body.email)
                 req.body.otp = otp
-                console.log(otp)
+           
                 const data = await otpSignupUseCase(dependencies).execute(req.body)
                 res.json({ status: true })
             }
         }
         catch (err: any) {
-            console.log(err?.message)
+          
             res.json({ status: false ,message:err?.message})
         }
 

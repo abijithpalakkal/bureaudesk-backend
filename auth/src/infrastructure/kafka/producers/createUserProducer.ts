@@ -6,7 +6,7 @@ export const userCreatedProducer = async (
 ) => {
     try {
         await producer.connect()
-        console.log("hellohellohellohello")
+        
             const message = {
                 topic: 'to-user',
                 messages: [{

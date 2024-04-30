@@ -13,9 +13,9 @@ export const createemployeeController = (dependencies: any) => {
     return async (req: Request, res: Response, next: NextFunction) => {
        
         try {
-           console.log(req.body)
+         
            const password=generateRandomPassword()
-           console.log(password,"randompassword🚀🚀")
+         
            const hashed=await hashPassword(password)
            const obj={
             email:req.body.email,
@@ -26,7 +26,7 @@ export const createemployeeController = (dependencies: any) => {
             password
            }
            await sendotp(obj13)
-           console.log("done")
+          
            const obj1={
                ...req.body,
                password:hashed,
