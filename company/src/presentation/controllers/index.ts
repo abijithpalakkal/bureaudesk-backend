@@ -8,6 +8,10 @@ import { getTeamController } from "./getteam";
 import { deleteTeamController } from "./deleteteam";
 import { addEventController } from "./addevent";
 import { getEventController } from "./getevents";
+import { addTaskController } from "./addtask";
+import { getTaskController } from "./gettask";
+import { updateEventController } from "./updateevents";
+import { deleteEventController } from "./deleteevent";
 
 export const controllers = (dependencies: any) => {
     return {
@@ -19,6 +23,10 @@ export const controllers = (dependencies: any) => {
         getteam:getTeamController(dependencies),
         deleteteam:deleteTeamController(dependencies),
         addevents:addEventController(dependencies),
-        getEvents:getEventController(dependencies)
+        getEvents:getEventController(dependencies),
+        addTask:addTaskController(dependencies),
+        getTask:getTaskController(dependencies),
+        updateevents:updateEventController(dependencies),
+        deleteEvent:deleteEventController(dependencies)
     }
 }

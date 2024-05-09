@@ -2,12 +2,13 @@
 import { NextFunction, Request, Response } from "express"
 import cron from 'node-cron';
 
-export const addEventController = (dependencies: any) => {
-    const { useCases: { addEventUseCase  } } = dependencies;
-    console.log("i am here")
+export const updateEventController = (dependencies: any) => {
+    const { useCases: { updateEventUseCase  } } = dependencies;
+ 
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const data = await addEventUseCase(dependencies).execute(req.body)
+             req.body.id=req.params.id
+            const data = await updateEventUseCase(dependencies).execute(req.body)
             res.json({status:true,payload:data})
         } catch (err: any) {
             console.log(err?.message)
