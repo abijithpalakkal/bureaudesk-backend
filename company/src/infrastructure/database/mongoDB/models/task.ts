@@ -10,7 +10,12 @@ const taskSchema = new Schema({
   Departmentid:{type:Schema.Types.ObjectId},
   files: [{ type: String }],
   assignedTo:{type:Schema.Types.ObjectId},
-  assignedBy:{type:Schema.Types.ObjectId}
+  assignedBy:{type:Schema.Types.ObjectId},
+  status: { 
+    type: String, 
+    enum: ['Assigned', 'Started', 'in_Progress', 'Done'], 
+    default: 'Assigned'
+  }
 },
  {
   timestamps: true
