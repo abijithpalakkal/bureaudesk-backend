@@ -12,7 +12,7 @@ export const updateTaskController = (dependencies: any) => {
             const data = await updateTaskUseCase(dependencies).execute(req.body)
             res.json({status:true,payload:data})
         } catch (err: any) {
-            console.log(err?.message)
+            next(err)
         }
     }
 } 

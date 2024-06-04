@@ -13,6 +13,9 @@ import { getTaskController } from "./gettask";
 import { updateEventController } from "./updateevents";
 import { deleteEventController } from "./deleteevent";
 import { updateTaskController } from "./updatetask";
+import {submitTaskController} from "./submittask"
+import {updateSubmittedTaskController} from "./updatesubmittedtask"
+import {getSubmittedTaskController} from "./getsubmittedtask"
 
 export const controllers = (dependencies: any) => {
     return {
@@ -29,6 +32,9 @@ export const controllers = (dependencies: any) => {
         getTask:getTaskController(dependencies),
         updateevents:updateEventController(dependencies),
         deleteEvent:deleteEventController(dependencies),
-        updateTask:updateTaskController(dependencies)
+        updateTask:updateTaskController(dependencies),
+        addSubmittedTask:submitTaskController(dependencies),
+        updateSubmmittedTask:updateSubmittedTaskController(dependencies),
+        getSubmittedTask:getSubmittedTaskController(dependencies)
     }
 }
