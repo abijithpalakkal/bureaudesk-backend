@@ -11,11 +11,13 @@ const chatSchema: Schema<any> = new Schema(
       type: Schema.Types.ObjectId,
      
     },
-    chatId: [{ type: Schema.Types.ObjectId}],
-    
-    lastMessage:{
-        type: Schema.Types.ObjectId
-      },
+    chatId: [{ type: Schema.Types.ObjectId,
+      ref: "message"
+    }],
+    latestMessage: {
+      type: Schema.Types.ObjectId,
+      ref: "message",
+    }
   },
   
   {

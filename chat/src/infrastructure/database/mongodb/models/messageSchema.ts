@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const MessageSchema = new Schema({
   sender: { type: Schema.Types.ObjectId, required: true },
   content: { type: String, required: true },
-  sentAt: { type: Date, default: Date.now },
+  sentAt: {type: Schema.Types.ObjectId,},
   readBy: [{ type: Schema.Types.ObjectId}],
 },
 {

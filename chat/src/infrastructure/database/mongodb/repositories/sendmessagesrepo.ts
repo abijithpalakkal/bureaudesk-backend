@@ -1,26 +1,25 @@
 import { Chat } from "../models/chatSchema";
 import { Message } from "../models/messageSchema"
 
-export const sendMessage = async ({ content, chatId, userId }: any) => {
+export const sendMessage = async (obj:any) => {
   try {
-    const newMessage = {
-      chatId,
-      content,
-      sender: userId,
-    };
 
-    const message = await Message.create(newMessage);
-    await Chat.findByIdAndUpdate(chatId, {
-      latestMessage: message, 
+    const {chatId,...chatData} = obj
+    
+    
+    console.log("hello",chatData)
+    const message = await Message.create(chatData);
+
+   const data = await Chat.findByIdAndUpdate(chatId, {
+      latestMessage: message._id, 
+      $push: { chatId: message._id }
     });
 
-    const chats = await Message.find({chatId}).populate("chatId")
+    // const chats = await Message.find({chatId}).populate("chatId")
 
-    const data = {
-      message, 
-      chats
-    }
+
     return data;
+
   } catch (error: any) {
     throw new Error(error.message);
   }

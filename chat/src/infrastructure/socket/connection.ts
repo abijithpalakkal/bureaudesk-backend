@@ -27,13 +27,26 @@ const connectSocketIo = (server: Server) => {
             socket.join(room);
             console.log("User Joined", room);
         });
+
         socket.on("new message", (newMessage) => {
             console.log(newMessage, "new Message");
-
             const chat = newMessage?.chatId;
             console.log("🚀 ~ file: connection.ts:32 ~ socket.on ~ chat:", chat)
-            io.to(chat).emit("message recieved", newMessage);
+            io.to(chat).emit("message recieved", newMessage.obj);
         })
+
+        socket.on("disconnec", (id:string) => {
+            delete userSocketMap[id];
+            io.emit("getOnlineUsers", Object.keys(userSocketMap));
+            console.log(`Socket disconnected`,id,87);
+        });
+
+        socket.on("videoCall", (data) => {
+            console.log("hello chat in Videochat")
+            const targetSocketId:any =userSocketMap[data.userId]
+            console.log(targetSocketId)
+            io.to(targetSocketId).emit('incomingCall', data);
+        });
     })
 }
 
