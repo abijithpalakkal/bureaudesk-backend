@@ -20,3 +20,24 @@ export const sendcomapanyid = async (
         await producer.disconnect();
     }
 }
+
+export const sendnotification = async (
+    data: any
+) => {
+    try {
+        await producer.connect()
+        console.log("here in the producer of the company")
+            const message = {
+                topic: 'to-notification',
+                messages: [{
+                    key: 'updateUser',
+                    value: JSON.stringify(data)
+                }]
+            };
+            await  producer.send(message);
+    } catch (error: any) {
+        console.error('kafka produce error', error?.message);
+    } finally {
+        await producer.disconnect();
+    }
+}

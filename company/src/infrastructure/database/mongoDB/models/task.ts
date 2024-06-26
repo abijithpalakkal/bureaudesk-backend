@@ -11,9 +11,10 @@ const taskSchema = new Schema({
   files: [{ type: String }],
   assignedTo:{type:Schema.Types.ObjectId},
   assignedBy:{type:Schema.Types.ObjectId},
+  lateSubmission: { type: Boolean, default: false },
   status: { 
     type: String, 
-    enum: ['Assigned', 'Started', 'in_Progress', 'Done'], 
+    enum: ['Assigned', 'Started', 'in_Progress', 'Done',"Approved","Rejected"], 
     default: 'Assigned'
   }
 },

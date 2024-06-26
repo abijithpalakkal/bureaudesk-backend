@@ -45,7 +45,11 @@ const connectSocketIo = (server: Server) => {
             console.log("hello chat in Videochat")
             const targetSocketId:any =userSocketMap[data.userId]
             console.log(targetSocketId)
-            io.to(targetSocketId).emit('incomingCall', data);
+            io.to(targetSocketId).emit('incomingCall', { data });
+        });
+        socket.on("global_message", (data:any) => {
+          console.log(data,"connection")
+          io.emit("getGlobalChat", data)
         });
     })
 }

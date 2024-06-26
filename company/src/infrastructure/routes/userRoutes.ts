@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express"
 import { controllers } from "../../presentation/controllers"
 
 export const userRouter = (dependencies: any) => {
-    const { createcomapny, getcompanyinfo, createdept, getdpt, createteam, getteam, updateTask, deleteteam, addevents, deleteEvent, getEvents, addTask, updateevents, getTask, addSubmittedTask, updateSubmmittedTask, getSubmittedTask } = controllers(dependencies)
+    const { createcomapny, getcompanyinfo, createdept, getdpt, createteam, getteam, updateTask, deleteteam, addevents, deleteEvent, getEvents, addTask, updateevents, getTask, addSubmittedTask, updateSubmmittedTask, getSubmittedTask,addProject } = controllers(dependencies)
     const router = Router();
     router.route("/createcompany")
         .post(createcomapny)
@@ -37,6 +37,8 @@ export const userRouter = (dependencies: any) => {
         .post(addSubmittedTask)
     router.route("/getsubmittask")
         .post(getSubmittedTask)
+     router.route("/addproject")
+        .post(addProject)
         
     return router
 }
