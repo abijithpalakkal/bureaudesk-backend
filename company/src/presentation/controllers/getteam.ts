@@ -14,7 +14,11 @@ export const getTeamController = (dependencies: any) => {
             let data=[]
              data = await getTeamUseCase(dependencies).execute({departmentid:req.params.id})
             if(data.length==0){
+                console.log("yrp123")
                  data = await getTeamUseCase(dependencies).execute({companyId:req.params.id})
+            }
+            if(data.length==0){
+                data = await getTeamUseCase(dependencies).execute({_id:req.params.id})
             }
          
             res.json({status:true,payload:data})

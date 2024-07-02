@@ -5,7 +5,9 @@ const projectSchema = new Schema({
   projectDescription: { type: String },
   priority: { type: String },
   deadLine: { type: String },
-  attachments:{type:[String]}
+  teamId:{   type:Schema.Types.ObjectId},
+  attachments:{type:[String]},
+  companyId:{type:String }
 }, {
   timestamps: true
 });
