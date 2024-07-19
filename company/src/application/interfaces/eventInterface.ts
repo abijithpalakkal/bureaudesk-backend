@@ -6,7 +6,9 @@ interface iEvent extends Document {
   eventCategory: string;
   priority: string;
   eventDate: string;
+  eventEndDate: string;
   eventTime: string;
+  eventEndTime: string;
   eventDescription: string;
   companyid: Types.ObjectId;
 }

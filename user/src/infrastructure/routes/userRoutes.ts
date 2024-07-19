@@ -1,6 +1,7 @@
 import { Router } from "express"
 import { NextFunction, Request, Response } from "express"
 import { controllers } from "../../presentation/controllers"
+import jwtMiddleware from "../../middleware/jwtmiddleware"
 
 export const userRouter = (dependencies: any) => {
     const { getuserlogin, getuserforauth, createuser, getemployees, updateuser, setmanager ,getuserdetails} = controllers(dependencies)
@@ -10,16 +11,16 @@ export const userRouter = (dependencies: any) => {
     router.route("/getuserforauth")
         .get(getuserforauth)
     router.route("/addemployee")
-        .post(createuser)
+        .post(jwtMiddleware,createuser)
     router.route("/getdepartmentemployee/:id")
-        .get(getemployees)
+        .get(jwtMiddleware,getemployees)
     router.route("/updateuser/:id")
-        .post(updateuser)
+        .post(jwtMiddleware,updateuser)
     router.route("/getuserbyid/:id")
-        .get(updateuser)
+        .get(jwtMiddleware,updateuser)
     router.route("/setmanager")
-        .post(setmanager)
+        .post(jwtMiddleware,setmanager)
     router.route("/getuserdetails")
-        .post(getuserdetails)
+        .post(jwtMiddleware,getuserdetails)
     return router
 }

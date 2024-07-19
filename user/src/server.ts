@@ -2,6 +2,9 @@ import express,{Application,Request,NextFunction, Response}from "express"
 import cookieParser from "cookie-parser"
 import { userRouter } from "./infrastructure/routes/userRoutes"
 import { dependencies } from "./config/dependencies"
+import dotenv from "dotenv";
+
+dotenv.config();
 
 
 const app: Application=express()
@@ -26,7 +29,7 @@ app.use((
      res.json(errorResponse);
   })
 
-app.listen(port,()=>{
-    console.log("system running")
+app.listen(process.env.port,()=>{
+    console.log("system running",process.env.port)
 })
 export default app

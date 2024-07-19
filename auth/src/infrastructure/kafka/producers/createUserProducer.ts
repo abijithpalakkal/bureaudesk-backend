@@ -5,6 +5,7 @@ export const userCreatedProducer = async (
     data: any
 ) => {
     try {
+        console.log(data,"data to kafka")
         await producer.connect()
         
             const message = {

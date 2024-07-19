@@ -15,8 +15,8 @@ export const getEventController = (dependencies: any) => {
 
             const expiredEventIds = eventsArray
             .filter((event: iEvent) => {
-                const eventDate = new Date(event.eventDate);
-                const eventTime = event.eventTime.split(':').map(Number);
+                const eventDate = new Date(event.eventEndDate);
+                const eventTime = event.eventEndTime.split(':').map(Number);
         
                 eventDate.setHours(eventTime[0], eventTime[1]);
         

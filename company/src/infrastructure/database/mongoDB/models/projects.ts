@@ -6,6 +6,7 @@ const projectSchema = new Schema({
   priority: { type: String },
   deadLine: { type: String },
   teamId:{   type:Schema.Types.ObjectId},
+  completed:{type: Boolean ,default:false },
   attachments:{type:[String]},
   companyId:{type:String }
 }, {

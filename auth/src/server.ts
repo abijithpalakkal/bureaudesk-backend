@@ -2,7 +2,8 @@ import express,{Application, NextFunction, Request, Response}from "express"
 import cookieParser from "cookie-parser"
 import { userRouter } from "./infrastructure/routes/userRoutes"
 import { dependencies } from "./config/dependencies"
-require('dotenv').config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const app: Application=express()
 const port: number=3000
@@ -14,8 +15,8 @@ app.use(cookieParser());
 app.use("/",(req,res,next)=>{console.log(req.body),next()},userRouter(dependencies))
 
 app.use((
-    err: Error,
-    req: Request,
+    err: any,
+    req: any,
     res: Response,
     next: NextFunction
   ) => {
@@ -28,7 +29,7 @@ app.use((
   })
 
 
-app.listen(port,()=>{
-    console.log("system running")
+app.listen(process.env.port,()=>{
+    console.log("system running",process.env.port)
 })
 export default app

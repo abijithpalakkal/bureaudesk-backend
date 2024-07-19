@@ -4,8 +4,8 @@ import http from "http";
 import connectSocketIo from "./infrastructure/socket/connection"
  import { userRouter } from "./infrastructure/routes/chatRouter"
  import { dependencies } from "./config/dependencies"
-// import { dependencies } from "./config/dependencies"
-// require('dotenv').config();
+ import dotenv from 'dotenv';
+ dotenv.config();
 
 const app: Application=express()
 const port: number= 3005
@@ -34,7 +34,7 @@ app.use((
   })
 
 
-server.listen(port,()=>{
-    console.log("system running")
+server.listen(process.env.port,()=>{
+    console.log("system running",process.env.port)
 }) 
 export default app

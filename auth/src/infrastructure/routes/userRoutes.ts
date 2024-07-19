@@ -5,7 +5,7 @@ import { controllers } from "../../presentation/controllers"
 export const userRouter = (dependencies: any) => {
 
         console.log("i am here")
-        const { otpsignup, userlogin,userlogout,otpResend} = controllers(dependencies)
+        const { otpsignup, userlogin, userlogout, updateuser, otpResend } = controllers(dependencies)
         const router = Router();
         router.route("/otpsignup")
                 .post(otpsignup)
@@ -13,7 +13,9 @@ export const userRouter = (dependencies: any) => {
                 .post(userlogin)
         router.route("/logout")
                 .get(userlogout)
-                router.route("/otpresend")
+        router.route("/otpresend")
                 .post(otpResend)
+        router.route("/updateuser")
+                .post(updateuser).patch(updateuser)
         return router
 }

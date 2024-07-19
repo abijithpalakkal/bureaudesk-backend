@@ -6,6 +6,9 @@ const eventSchema = new Schema({
   priority: { type: String },
   eventDate: { type: String },
   eventTime: { type: String }, // Specify the type as String
+  eventEndDate:{ type: String },
+  eventEndTime:{ type: String },
+  invitees:[{ type: Schema.Types.ObjectId}],
   eventDescription: { type: String },
   companyid:{type: Schema.Types.ObjectId}
 }, {

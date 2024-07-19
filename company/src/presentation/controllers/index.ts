@@ -18,6 +18,8 @@ import {updateSubmittedTaskController} from "./updatesubmittedtask"
 import {getSubmittedTaskController} from "./getsubmittedtask"
 import { addProjectController } from "./addproject";
 import { getProjectController } from "./getproject";
+import { updateProjectController } from "./updateproject";
+import { getallcompanyinfoController } from "./getallcompany";
 
 export const controllers = (dependencies: any) => {
     return {
@@ -39,6 +41,8 @@ export const controllers = (dependencies: any) => {
         updateSubmmittedTask:updateSubmittedTaskController(dependencies),
         getSubmittedTask:getSubmittedTaskController(dependencies),
         addProject:addProjectController(dependencies),
-        getProject:getProjectController(dependencies)
+        getProject:getProjectController(dependencies),
+        updateProject:updateProjectController(dependencies),
+        getallcompany:getallcompanyinfoController(dependencies)
     }
 }

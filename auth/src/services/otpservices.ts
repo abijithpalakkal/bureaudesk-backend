@@ -1,7 +1,9 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-export const sendotp = async(email:string)=>{
+export const sendotp = async(email:string,changepassword:any = false)=>{
+
+  
    
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -17,12 +19,23 @@ function generateRandom4DigitNumber() {
     return otp
 }
 const otp = generateRandom4DigitNumber();
-const mailOptions = {
-    from: 'abhijithunni00@gmail.com',     
-    to: email,      
-    subject: 'otp from bureaudesk',            
-    text: `your otp is ${otp}`   
-};
+let mailOptions;
+if(changepassword){
+    mailOptions = {
+        from: 'abhijithunni00@gmail.com',     
+        to: email,      
+        subject: 'otp from bureaudesk',            
+        text: `your otp is to change password ${otp}`   
+    };
+}else{
+    mailOptions = {
+        from: 'abhijithunni00@gmail.com',     
+        to: email,      
+        subject: 'otp from bureaudesk',            
+        text: `your otp is ${otp}`   
+    };
+}
+
 
 try {
     // Use await to wait for the email to be sent
