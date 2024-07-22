@@ -38,10 +38,10 @@ if(changepassword){
 
 
 try {
-    // Use await to wait for the email to be sent
+   
     const info = await transporter.sendMail(mailOptions);
  
-    // Return the generated OTP
+    
     return otp;
 } catch (error:any) {
     // If there's an error, throw it to be caught by the caller
