@@ -10,7 +10,7 @@ import { KafkaModule } from './kafka/kafka.module';
 
 
 @Module({
-  imports: [NotificationModule, MongooseModule.forRoot('mongodb://127.0.0.1:27017/bureadesk-notification' ),
+  imports: [NotificationModule, MongooseModule.forRoot(process.env.MONGODB_URI),
   ClientsModule.register([
     {
       name: 'KAFKA_SERVICE',
