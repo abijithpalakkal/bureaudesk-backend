@@ -1,4 +1,6 @@
-FROM node:18-alpine
+FROM node:18-alpine AS build
+
+RUN apk add --no-cache make gcc g++ python3
 
 WORKDIR /app
 
