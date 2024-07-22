@@ -1,14 +1,10 @@
-FROM node:18-alpine AS build
-
-RUN apk add --no-cache make gcc g++ python3
+FROM node:alpine
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
-
-RUN npm install typescript -g
+RUN npm i
 
 COPY . .
 
