@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bureaudesk-user-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bureaudesk-user-service
+  template:
+    metadata:
+      labels:
+        app: bureaudesk-user-service
+    spec:
+      containers:
+        - name: bureaudesk-user-service
+          image: abhijithunni/bureaudesk-user-service:latest
+          ports:
+            - containerPort: 3001
+          envFrom:
+            - configMapRef:
+                name: user-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bureaudesk-user-service
+spec:
+  selector:
+    app: bureaudesk-user-service
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001

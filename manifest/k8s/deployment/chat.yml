@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bureaudesk-chat-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bureaudesk-chat-service
+  template:
+    metadata:
+      labels:
+        app: bureaudesk-chat-service
+    spec:
+      containers:
+        - name: bureaudesk-chat-service
+          image: abhijithunni/bureaudesk-chat-service:latest
+          ports:
+            - containerPort: 3005
+          envFrom:
+            - configMapRef:
+                name: chat-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bureaudesk-chat-service
+spec:
+  selector:
+    app: bureaudesk-chat-service
+  ports:
+    - protocol: TCP
+      port: 3005
+      targetPort: 3005

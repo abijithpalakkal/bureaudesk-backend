@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bureaudesk-auth-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bureaudesk-auth-service
+  template:
+    metadata:
+      labels:
+        app: bureaudesk-auth-service
+    spec:
+      containers:
+        - name: bureaudesk-auth-service
+          image: abhijithunni/bureaudesk-auth-service:latest
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: auth-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bureaudesk-auth-service
+spec:
+  selector:
+    app: bureaudesk-auth-service
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

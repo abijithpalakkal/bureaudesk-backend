@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bureaudesk-company-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bureaudesk-company-service
+  template:
+    metadata:
+      labels:
+        app: bureaudesk-company-service
+    spec:
+      containers:
+        - name: bureaudesk-company-service
+          image: abhijithunni/bureaudesk-company-service:latest
+          ports:
+            - containerPort: 3002
+          envFrom:
+            - configMapRef:
+                name: company-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bureaudesk-company-service
+spec:
+  selector:
+    app: bureaudesk-company-service
+  ports:
+    - protocol: TCP
+      port: 3002
+      targetPort: 3002
