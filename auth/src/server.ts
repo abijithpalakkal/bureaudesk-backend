@@ -30,6 +30,6 @@ app.use((
 
 
 app.listen(process.env.port,()=>{
-    console.log("system running",process.env.port)
+    console.log("systemrunning",process.env.port)
 })
 export default app
