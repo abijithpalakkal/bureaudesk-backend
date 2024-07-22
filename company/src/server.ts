@@ -23,7 +23,7 @@ app.use((
     next: NextFunction
   ) => {
     
-    console.log(err.message,"👌🚀👌😁")
+    console.log(err.message,"👌🚀👌😁.")
       const errorresponse = {
         errorResponse:{message: err?.message || 'Something went wrong' }
     };
