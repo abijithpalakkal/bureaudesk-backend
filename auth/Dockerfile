@@ -2,11 +2,13 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY . .
+COPY package.json .
 
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 RUN npm install typescript -g
+
+COPY . .
 
 RUN npm run build
 
