@@ -18,7 +18,10 @@ export const getuserController = (dependencies: any) => {
                 password: data.password,
                 companyid: data?.companyid
             }
-            const token = jwt.sign(payload, '123456789ab', { expiresIn: '24h' })
+            let token
+            if(process.env.SECRET_KEY){
+                token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '24h' })
+            }
             res.cookie('auth', token, {
                 httpOnly: true,
                 maxAge: 60 * 60 * 24 * 7 * 1000,

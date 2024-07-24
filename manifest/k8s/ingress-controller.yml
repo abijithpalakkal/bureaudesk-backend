@@ -1,0 +1,64 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-controller
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bureaudesk-client
+                port:
+                  number: 5173
+          - path: /company
+            pathType: Prefix
+            backend:
+              service:
+                name: bureaudesk-company-service
+                port:
+                  number: 3002
+          - path: /socket.io
+            pathType: Prefix
+            backend:
+              service:
+                name: bureaudesk-chat-service
+                port:
+                  number: 3005
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service:
+                name: bureaudesk-auth-service
+                port:
+                  number: 3000
+          - path: /chat
+            pathType: Prefix
+            backend:
+              service:
+                name: bureaudesk-chat-service
+                port:
+                  number: 3005
+          - path: /notification
+            pathType: Prefix
+            backend:
+              service:
+                name: bureaudesk-notification-service
+                port:
+                  number: 3007
+          - path: /user
+            pathType: Prefix
+            backend:
+              service:
+                name: bureaudesk-user-service
+                port:
+                  number: 3001
+          

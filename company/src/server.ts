@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());  
 
-app.use("/",userRouter(dependencies))
+app.use("/company",userRouter(dependencies))
 
 app.use((
     err: any,

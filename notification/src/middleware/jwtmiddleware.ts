@@ -11,7 +11,7 @@ function jwtMiddleware(req: AuthenticatedRequest, res: Response, next: NextFunct
        res.json({errorResponse:{message: 'session Expired.Please logout'} });
     }
     try {
-        const decoded = jwt.verify(token, '123456789ab') as { [key: string]: any };
+        const decoded = jwt.verify(token, process.env.SECRET_KEY) as { [key: string]: any };
         next();
     } catch (error) {
         res.json({errorResponse:{message: 'session Expired.Please logout'} });
