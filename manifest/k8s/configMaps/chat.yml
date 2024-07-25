@@ -7,4 +7,4 @@ metadata:
 data:
   port: "3005"
   MONGODB_URI: "mongodb+srv://abhijithunni00:4wZ6UsFnxwsUDaBJ@bureaudesk.kp8a7zw.mongodb.net/bureaudeskChat?retryWrites=true&w=majority&appName=bureaudesk"
-  FRONT_END_URL: "http://localhost:5173"
+  FRONT_END_URL: "https://bureaudesk.futstore.me"

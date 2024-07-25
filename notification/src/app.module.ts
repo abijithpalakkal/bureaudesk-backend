@@ -17,7 +17,7 @@ import { KafkaModule } from './kafka/kafka.module';
       transport: Transport.KAFKA,
       options: {
         client: {
-          brokers: ['localhost:29092'], // Replace with your Kafka broker address
+          brokers: ['kafka:9092'], // Replace with your Kafka broker address
         },
         consumer: {
           groupId: 'my-consumer-group', // Replace with your consumer group

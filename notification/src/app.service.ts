@@ -8,5 +8,4 @@ export class AppService {
   helloworld():string{
     return "veedum heel"
   }
-
 }
