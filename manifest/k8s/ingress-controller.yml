@@ -9,8 +9,13 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
 spec:
   ingressClassName: webapprouting.kubernetes.azure.com
+  tls:
+    - hosts:
+        - bureaudesk.futstore.me
+      secretName: cloudflare-cert-secret
   rules:
-    - http:
+    - host: bureaudesk.futstore.me
+      http:
         paths:
           - path: /
             pathType: Prefix
@@ -61,4 +66,3 @@ spec:
                 name: bureaudesk-user-service
                 port:
                   number: 3001
-          

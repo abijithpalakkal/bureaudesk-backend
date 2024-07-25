@@ -6,7 +6,7 @@ import { NotificationService } from 'src/notification/notification.service';
 @Injectable()
 export class KafkaService implements OnModuleInit {
     private readonly kafka = new Kafka({
-        brokers: ['localhost:29092'], // Replace with your Kafka broker address
+        brokers: ['kafka:9092'], // Replace with your Kafka broker address
     });
 
     private readonly consumer: Consumer = this.kafka.consumer({ groupId: 'my-consumer-group' });
