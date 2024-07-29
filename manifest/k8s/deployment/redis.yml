@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: redis-stack
-        image: redis/redis-stack:latest-arm64v8
+        image: redis/redis-stack:latest
         ports:
         - containerPort: 6379
         - containerPort: 8001
