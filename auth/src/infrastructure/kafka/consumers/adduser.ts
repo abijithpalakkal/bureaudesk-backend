@@ -6,5 +6,4 @@ export const addUser=async(data:any)=>{
     }catch(err:any){
         throw new Error(err?.message)
     }
-     
 }
