@@ -14,7 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());  
 
-app.use("/chat",(req,res,next)=>{console.log(req.body),next()},userRouter(dependencies))
+// app.use("/chat",(req,res,next)=>{console.log(req.body),next()},userRouter(dependencies))
+app.use("/",(req,res,next)=>{console.log(req.body),next()},userRouter(dependencies))
 const server = http.createServer(app);
 
 connectSocketIo(server);

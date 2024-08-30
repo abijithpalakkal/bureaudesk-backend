@@ -12,7 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());  
 
-app.use("/auth",(req,res,next)=>{console.log(req.body),next()},userRouter(dependencies))
+// app.use("/auth",(req,res,next)=>{console.log(req.body),next()},userRouter(dependencies))
+app.use("/",(req,res,next)=>{console.log(req.body),next()},userRouter(dependencies))
 
 app.use((
     err: any,
