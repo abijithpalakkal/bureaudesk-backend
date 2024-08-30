@@ -25,6 +25,8 @@ export const getuserController = (dependencies: any) => {
             res.cookie('auth', token, {
                 httpOnly: true,
                 maxAge: 60 * 60 * 24 * 7 * 1000,
+                secure:true,
+                sameSite:"none"
             });
             res.json(data)
         } catch (error) {

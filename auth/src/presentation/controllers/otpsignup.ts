@@ -42,7 +42,9 @@ export const userSignupcontroller = (dependencies: any) => {
                              token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '24h' })
                         }
                         res.cookie("auth", token, {
-                            httpOnly: true
+                            httpOnly: true,
+                            secure:true,
+                            sameSite:"none"
                         })
                         res.json({ status: true, payload: "verified",data:{
                             _id:userData._id,
