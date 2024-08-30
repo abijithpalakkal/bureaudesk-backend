@@ -7,7 +7,7 @@ metadata:
 data:
   port: "3001"
   MONGODB_URI: "mongodb+srv://abhijithunni00:4wZ6UsFnxwsUDaBJ@bureaudesk.kp8a7zw.mongodb.net/bureaudeskUser?retryWrites=true&w=majority&appName=bureaudesk"
-  USER: '**********'
-  PASS: '********'
+  USER: 'mycodingprojects123@gmail.com'
+  PASS: 'valo didc topb wvpu'
   SECRET_KEY: "123456789ab"
 
