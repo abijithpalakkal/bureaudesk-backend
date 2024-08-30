@@ -5,7 +5,7 @@ import { Kafka, Producer, Consumer } from "kafkajs";
 //     brokers: ["kafka:9092"]
 // })
 
-const kafka = new Kafka({
+export const kafka = new Kafka({
     clientId: 'user-service',
     brokers: ['pkc-4j8dq.southeastasia.azure.confluent.cloud:9092'],
     ssl: true,
