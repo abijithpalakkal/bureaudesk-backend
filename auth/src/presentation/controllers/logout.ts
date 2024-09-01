@@ -12,7 +12,11 @@ export const logoutcontroller = () => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
            console.log(req.cookies)
-           res.clearCookie("auth")
+           res.clearCookie("auth",{ 
+            httpOnly: true, 
+            secure:true,
+            sameSite: "none",
+          })
            res.json({status:true,message:"successfully logged out"})
         }catch (err: any) {
             console.log(err?.message)
