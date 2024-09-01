@@ -9,7 +9,7 @@ export const getuserController = (dependencies: any) => {
 
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const obj={_id:req.body.id}
+            const obj = { _id: req.body.id }
             const data = await getUserUseCase(dependencies).execute(obj)
             const payload = {
                 _id: data.id,
@@ -19,15 +19,14 @@ export const getuserController = (dependencies: any) => {
                 companyid: data?.companyid
             }
             let token
-            if(process.env.SECRET_KEY){
+            if (process.env.SECRET_KEY) {
                 token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '24h' })
             }
-            res.cookie('auth', token, {
+            res.cookie("auth", token, {
                 httpOnly: true,
-                maxAge: 60 * 60 * 24 * 7 * 1000,
                 secure:true,
                 sameSite:"none"
-            });
+            })
             res.json(data)
         } catch (error) {
             next(error)
